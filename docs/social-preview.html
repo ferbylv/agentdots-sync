@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>agentdots-sync</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1280px; height: 640px; overflow: hidden; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      color: #f4f7fb;
+      background:
+        radial-gradient(1200px 520px at 88% -10%, rgba(56, 189, 248, 0.22), transparent 55%),
+        radial-gradient(900px 480px at -10% 110%, rgba(167, 139, 250, 0.18), transparent 50%),
+        linear-gradient(135deg, #07111f 0%, #0b1a2e 48%, #10243b 100%);
+    }
+    .frame {
+      width: 1280px;
+      height: 640px;
+      padding: 72px 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 78%);
+    }
+    .orb {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: 92px;
+      top: 168px;
+      border: 1.5px solid rgba(125, 211, 252, 0.35);
+      border-radius: 50%;
+    }
+    .orb:after, .orb:before {
+      content: "";
+      position: absolute;
+      border: 1.5px solid rgba(167, 139, 250, 0.28);
+      border-radius: 50%;
+    }
+    .orb:before { inset: 38px; }
+    .orb:after { inset: 78px; border-color: rgba(56, 189, 248, 0.45); }
+    .dot {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 18px #38bdf8;
+    }
+    .dot.a { top: 8px; left: 133px; }
+    .dot.b { bottom: 46px; left: 34px; background: #a78bfa; box-shadow: 0 0 18px #a78bfa; }
+    .dot.c { right: 36px; top: 118px; background: #34d399; box-shadow: 0 0 18px #34d399; }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+    .kicker span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 12px #34d399;
+    }
+    h1 {
+      font-size: 84px;
+      line-height: 0.95;
+      font-weight: 730;
+      letter-spacing: -0.045em;
+      margin-bottom: 28px;
+    }
+    p.sub {
+      max-width: 760px;
+      font-size: 30px;
+      line-height: 1.35;
+      color: #d6e4f5;
+      font-weight: 450;
+      margin-bottom: 48px;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 12px; max-width: 820px; }
+    .chip {
+      border: 1px solid rgba(186, 230, 253, 0.28);
+      background: rgba(15, 23, 42, 0.35);
+      color: #e2e8f0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 20px;
+      font-weight: 550;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="grid"></div>
+    <div class="orb">
+      <i class="dot a"></i>
+      <i class="dot b"></i>
+      <i class="dot c"></i>
+    </div>
+    <div class="kicker"><span></span> Agent Skills Sync</div>
+    <h1>agentdots-sync</h1>
+    <p class="sub">Backup and sync AI agent skills, rules, and instructions with Git.</p>
+    <div class="chips">
+      <div class="chip">Claude Code</div>
+      <div class="chip">Codex</div>
+      <div class="chip">OpenCode</div>
+      <div class="chip">Grok</div>
+      <div class="chip">CodeBuddy</div>
+      <div class="chip">WorkBuddy</div>
+    </div>
+  </div>
+</body>
+</html>

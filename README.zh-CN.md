@@ -1,12 +1,48 @@
-# meta-sync-manager
+# agentdots-sync
 
 <p align="right">
   <a href="./README.md">English</a> | <b>简体中文</b>
 </p>
 
-`meta-sync-manager` 用于安全地规划和执行本地 AI Agent 指令、规则与 Skill 资产和 Git 远程仓库之间的精确同步。它提供平台 Profile，同时保留显式路径覆盖能力，适用于非标准目录和项目级布局。
+<p align="center">
+  <img src="docs/social-preview.png" alt="agentdots-sync — 把 AI Agent 的 Skills、规则和指令安全同步到 Git" width="100%">
+</p>
+
+<p align="center">
+  <a href="https://github.com/ferbylv/agentdots-sync/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-1f6feb" alt="MIT License"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.9%2B-3776AB" alt="Python 3.9+"></a>
+  <a href="https://github.com/ferbylv/agentdots-sync/releases"><img src="https://img.shields.io/github/v/release/ferbylv/agentdots-sync" alt="GitHub release"></a>
+  <a href="https://github.com/topics/agent-skills"><img src="https://img.shields.io/badge/topic-agent--skills-6e40c9" alt="agent-skills"></a>
+</p>
+
+把本地 AI Agent 的 **Skills**、**规则** 和指令文件（`AGENTS.md`、`CLAUDE.md`）备份并同步到 Git 远程仓库。支持 Claude Code、Codex、OpenCode、Grok Build、CodeBuddy、WorkBuddy。
 
 本工具只同步文件，不负责在不同平台之间转换指令格式。
+
+## 目录
+
+- [安装](#安装)
+- [支持的平台 Profile](#支持的平台-profile)
+- [安全模型](#安全模型)
+- [环境要求](#环境要求)
+- [查看平台和运行条件](#查看平台和运行条件)
+- [应用、推送与回滚](#应用推送与回滚)
+- [测试与发布检查](#测试与发布检查)
+
+## 安装
+
+```bash
+npx skills add ferbylv/agentdots-sync
+```
+
+```bash
+gh skill install ferbylv/agentdots-sync
+```
+
+```bash
+git clone https://github.com/ferbylv/agentdots-sync.git
+python3 skills/agentdots-sync/scripts/sync.py --list-platforms
+```
 
 ## 支持的平台 Profile
 
@@ -44,10 +80,10 @@
 ## 查看平台和运行条件
 
 ```bash
-python3 scripts/sync.py --list-platforms
-python3 scripts/sync.py --platform claude-code --doctor
-python3 scripts/sync.py --platform opencode --plan
-python3 scripts/sync.py --platform claude-code --apply --plan \
+python3 skills/agentdots-sync/scripts/sync.py --list-platforms
+python3 skills/agentdots-sync/scripts/sync.py --platform claude-code --doctor
+python3 skills/agentdots-sync/scripts/sync.py --platform opencode --plan
+python3 skills/agentdots-sync/scripts/sync.py --platform claude-code --apply --plan \
   --remote https://example.com/account/agent-assets.git --branch main
 ```
 
@@ -58,23 +94,23 @@ python3 scripts/sync.py --platform claude-code --apply --plan \
 先运行计划，核对规范平台名、根目录、资产列表、备份目录、远程仓库和分支。确认无误后，只执行已经明确授权的操作：
 
 ```bash
-python3 scripts/sync.py --platform claude-code --restore --yes \
+python3 skills/agentdots-sync/scripts/sync.py --platform claude-code --restore --yes \
   --remote https://example.com/account/agent-assets.git --branch main
 
-python3 scripts/sync.py --platform grok-build --push --yes \
+python3 skills/agentdots-sync/scripts/sync.py --platform grok-build --push --yes \
   --remote https://example.com/account/agent-assets.git --branch main \
   --message "Update Grok skills"
 
-python3 scripts/sync.py --platform codebuddy-code --rollback --yes
+python3 skills/agentdots-sync/scripts/sync.py --platform codebuddy-code --rollback --yes
 ```
 
 需要时可以覆盖默认值：
 
 ```bash
-python3 scripts/sync.py --platform custom --root /path/to/agent-config \
+python3 skills/agentdots-sync/scripts/sync.py --platform custom --root /path/to/agent-config \
   --asset instructions.md --asset skills --plan
 
-python3 scripts/sync.py --platform opencode --root /path/to/project \
+python3 skills/agentdots-sync/scripts/sync.py --platform opencode --root /path/to/project \
   --asset AGENTS.md --asset .opencode/skills --plan
 ```
 
@@ -84,8 +120,8 @@ python3 scripts/sync.py --platform opencode --root /path/to/project \
 
 ```bash
 python3 -m unittest discover -s tests -v
-python3 scripts/sync.py --help
-python3 scripts/sync.py --list-platforms
+python3 skills/agentdots-sync/scripts/sync.py --help
+python3 skills/agentdots-sync/scripts/sync.py --list-platforms
 ```
 
-发布前需要校验 `SKILL.md`、检查发行文件清单，并在隔离的临时根目录中测试每个平台 Profile。发行包不得包含 `.DS_Store`、凭据、真实远程地址、生成的备份或锁文件。
+发布前需要校验 `skills/agentdots-sync/SKILL.md`、检查发行文件清单，并在隔离的临时根目录中测试每个平台 Profile。发行包不得包含 `.DS_Store`、凭据、真实远程地址、生成的备份或锁文件。

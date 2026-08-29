@@ -1,10 +1,10 @@
 ---
-name: meta-sync-manager
+name: agentdots-sync
 description: Use when users ask to sync, restore, apply, back up, push, or roll back local agent instructions, rules, or skills for Codex, Claude Code, OpenCode, Grok Build, CodeBuddy Code, WorkBuddy, or another Agent Skills-compatible platform.
 license: MIT
 ---
 
-# Meta Sync Manager
+# agentdots-sync
 
 Safely synchronize explicitly selected local agent assets with a Git remote. This Skill copies files; it does not translate `AGENTS.md`, `CLAUDE.md`, platform rules, or configuration formats into one another.
 
