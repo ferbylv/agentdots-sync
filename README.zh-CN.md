@@ -19,9 +19,12 @@
 
 本工具只同步文件，不负责在不同平台之间转换指令格式。
 
+安装后的用法见 **[使用说明](docs/使用说明.md)**（[English](docs/usage.md)）。
+
 ## 目录
 
 - [安装](#安装)
+- [使用说明](docs/使用说明.md)
 - [支持的平台 Profile](#支持的平台-profile)
 - [安全模型](#安全模型)
 - [环境要求](#环境要求)
@@ -43,6 +46,8 @@ gh skill install ferbylv/agentdots-sync
 git clone https://github.com/ferbylv/agentdots-sync.git
 python3 skills/agentdots-sync/scripts/sync.py --list-platforms
 ```
+
+对 Agent 怎么说、命令参数和 Claude Code 备份示例：[使用说明](docs/使用说明.md)。
 
 ## 支持的平台 Profile
 

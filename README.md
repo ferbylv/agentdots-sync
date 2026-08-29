@@ -19,9 +19,12 @@ Backup and sync local AI agent **skills**, **rules**, and instruction files (`AG
 
 The tool copies files; it does not convert instruction formats between platforms.
 
+After install, see **[Usage](docs/usage.md)** ([中文使用说明](docs/使用说明.md)).
+
 ## Contents
 
 - [Install](#install)
+- [Usage](docs/usage.md)
 - [Supported profiles](#supported-profiles)
 - [Safety model](#safety-model)
 - [Requirements](#requirements)
@@ -43,6 +46,8 @@ gh skill install ferbylv/agentdots-sync
 git clone https://github.com/ferbylv/agentdots-sync.git
 python3 skills/agentdots-sync/scripts/sync.py --list-platforms
 ```
+
+How to talk to the agent, which flags to use, and a Claude Code backup example: [Usage](docs/usage.md).
 
 ## Supported profiles
 
